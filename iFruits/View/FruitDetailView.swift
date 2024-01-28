@@ -50,6 +50,7 @@ struct FruitDetailView: View {
             // Ignore the empty space at the Top area
             .edgesIgnoringSafeArea(.top)
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
