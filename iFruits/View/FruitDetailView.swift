@@ -9,6 +9,7 @@ import SwiftUI
 
 struct FruitDetailView: View {
     var fruit: Fruit
+    
     var body: some View {
         NavigationView {
             ScrollView(.vertical, showsIndicators: false) {
@@ -27,6 +28,7 @@ struct FruitDetailView: View {
                             .font(.headline)
                             .multilineTextAlignment(.leading)
                         // NUTRIENTS
+                        FruitNutrientsView(fruit: fruit)
                         // SUBHEADLINE
                         Text("Learn more about \(fruit.title)".uppercased())
                             .fontWeight(.bold)
