@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var isShowingSettings: Bool = false
     var fruits: [Fruit] = fruitsData
     
     var body: some View {
@@ -16,6 +17,7 @@ struct ContentView: View {
                 ForEach(fruits.shuffled()) { fruitItem in
                     // Go to Detail View
                     NavigationLink(destination: FruitDetailView(fruit: fruitItem)) {
+                        // List of Content Items
                         FruitRowView(fruit: fruitItem)
                             .padding(.vertical, 4)
                     }
@@ -23,6 +25,15 @@ struct ContentView: View {
                 }
             }
             .navigationTitle("Fruits")
+            .navigationBarItems(trailing: Button(action: {
+                isShowingSettings = true
+            }) {
+                Image(systemName: "slider.horizontal.3")
+            }
+                .sheet(isPresented: $isShowingSettings) {
+                    SettingView()
+                }
+            )
         }
     }
 }
